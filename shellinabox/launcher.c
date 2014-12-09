@@ -1174,20 +1174,24 @@ static pam_handle_t *internalLogin(struct Service *service, struct Utmp *utmp,
     free(groups);
   }
 
+  // NOTE: This is a temporary change for JuliaBox.
+  // TODO: Should pick up environment variables from a configuration file for the correct fix
+  const char *path_env = "PATH=" LAUNCHER_PATH_ENV;
+
   // Add standard environment variables
   int numEnvVars               = 0;
   for (char **e = *environment; *e; numEnvVars++, e++) {
   }
   check(*environment           = realloc(*environment,
-                                     (numEnvVars + 6)*sizeof(char *)));
+                                     (numEnvVars + 6 + 1)*sizeof(char *)));
   (*environment)[numEnvVars++] = stringPrintf(NULL, "HOME=%s", pw->pw_dir);
   (*environment)[numEnvVars++] = stringPrintf(NULL, "SHELL=%s", pw->pw_shell);
   check(
-  (*environment)[numEnvVars++] = strdup(
-                              "PATH=/usr/local/bin:/usr/bin:/bin:/usr/games"));
+  (*environment)[numEnvVars++] = strdup(path_env));
   (*environment)[numEnvVars++] = stringPrintf(NULL, "LOGNAME=%s",
                                               service->user);
   (*environment)[numEnvVars++] = stringPrintf(NULL, "USER=%s", service->user);
+  (*environment)[numEnvVars++] = strdup("CMDSTAN_HOME=/usr/share/cmdstan");
   (*environment)[numEnvVars++] = NULL;
   free((void *)pw);
 
