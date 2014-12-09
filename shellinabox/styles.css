@@ -217,7 +217,7 @@
  * color.css style sheets cannot work, if we define colors in styles.css.
  */
 [else DEFINES_COLORS]
-#vt100 .ansi0               { color:            #2b2b2b; }
+#vt100 .ansi0               {                            }
 #vt100 .ansi1               { color:            #705050; }
 #vt100 .ansi2               { color:            #60b48a; }
 #vt100 .ansi3               { color:            #dfaf8f; }
