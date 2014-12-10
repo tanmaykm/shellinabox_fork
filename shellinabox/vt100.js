@@ -2744,6 +2744,7 @@ VT100.prototype.handleKey = function(event) {
       case 123: /* F12          */ ch = '\u001B[24~';                   break;
       case 144: /* Num Lock     */                                      return;
       case 145: /* Scroll Lock  */                                      return;
+      case 173: /* - for Firefox*/ ch = this.applyModifiers(45, event); break;
       case 186: /* ;            */ ch = this.applyModifiers(59, event); break;
       case 187: /* =            */ ch = this.applyModifiers(61, event); break;
       case 188: /* ,            */ ch = this.applyModifiers(44, event); break;
@@ -2889,6 +2890,8 @@ VT100.prototype.fixEvent = function(event) {
 
     case 109: /* - -> _ */ u = 45; s =  95; break;
     case 111: /* / -> ? */ u = 47; s =  63; break;
+
+    case 173: /* - -> _ FF15 */ u = 45; s =  95; break;
 
     case 186: /* ; -> : */ u = 59; s =  58; break;
     case 187: /* = -> + */ u = 61; s =  43; break;
