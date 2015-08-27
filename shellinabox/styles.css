@@ -225,7 +225,7 @@
 #vt100 .ansi5               { color:            #dc8cc3; }
 #vt100 .ansi6               { color:            #8cd0d3; }
 #vt100 .ansi7               { color:            #c1edff; }
-#vt100 .ansi8               { color:            #414141; }
+#vt100 .ansi8               { /* color:            #414141; */ }
 #vt100 .ansi9               { color:            #d70000; }
 #vt100 .ansi10              { color:            #afd7af; }
 #vt100 .ansi11              { color:            #d7af00; }
