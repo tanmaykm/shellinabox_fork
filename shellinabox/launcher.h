@@ -69,7 +69,7 @@ void closeAllFds(int *exceptFd, int num);
 // NOTE: This is a temporary change, specific to JuliaBox.
 // TODO: Should make path an optarg or pick up from a configuration file for the correct fix.
 #ifndef LAUNCHER_PATH_ENV
-#define LAUNCHER_PATH_ENV "/usr/local/texlive/2014/bin/x86_64-linux:/usr/local/bin:/usr/bin:/bin"
+#define LAUNCHER_PATH_ENV "/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/texlive/2014/bin/x86_64-linux:/usr/local/bin:/usr/bin:/bin:/sbin:/usr/sbin:/opt/julia/bin"
 #endif /* LAUNCHER_PATH_ENV */
 
 #endif /* LAUNCHER_H__ */
