@@ -1183,7 +1183,7 @@ static pam_handle_t *internalLogin(struct Service *service, struct Utmp *utmp,
   for (char **e = *environment; *e; numEnvVars++, e++) {
   }
   check(*environment           = realloc(*environment,
-                                     (numEnvVars + 6 + 1)*sizeof(char *)));
+                                     (numEnvVars + 6 + 2)*sizeof(char *)));
   (*environment)[numEnvVars++] = stringPrintf(NULL, "HOME=%s", pw->pw_dir);
   (*environment)[numEnvVars++] = stringPrintf(NULL, "SHELL=%s", pw->pw_shell);
   check(
@@ -1192,6 +1192,7 @@ static pam_handle_t *internalLogin(struct Service *service, struct Utmp *utmp,
                                               service->user);
   (*environment)[numEnvVars++] = stringPrintf(NULL, "USER=%s", service->user);
   (*environment)[numEnvVars++] = strdup("CMDSTAN_HOME=/usr/share/cmdstan");
+  (*environment)[numEnvVars++] = strdup("LD_LIBRARY_PATH=/usr/local/lib:/usr/local/nvidia/lib:/usr/local/nvidia/lib64:/usr/local/cuda/lib:/usr/local/cuda/lib64:/usr/local/cuda/nvvm/lib64");
   (*environment)[numEnvVars++] = NULL;
   free((void *)pw);
 
